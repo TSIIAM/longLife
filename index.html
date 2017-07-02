@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+  <meta name="description" content="Sistema de Gestion para Consultas medicas de los usuarios de Mutualista.">
+  <meta name="author" content="">
+
+  <title>Sistema de Gestion para Consultas</title>
+
+  <!-- Bootstrap core CSS -->
+  <link href="./css/bootstrap.min.css" rel="stylesheet">
+  <!-- Estilo de el tablero -->
+  <link href="./css/dashboard.css" rel="stylesheet">
+   <!-- font awesome icons   -->
+  <link rel="stylesheet" href="./fontAwesome4/css/font-awesome.min.css">
+  <!-- Icono de el programa   -->
+  <link rel="icon" type="image/svg" href="./svg/firstaidkit.svg" />
+
+</head>
+
+<body>
+
+  <nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">LONG LIFE</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+        <a class="navbar-brand" href="#">LONG LIFE</a>
+      </div>
+      <div id="navbar" class="navbar-collapse collapse" aria-expanded="false" style="height: 1px;">
+        <ul class="nav navbar-nav navbar-right">
+          <!--<li><a href="#">Tablero</a></li>
+          <li><a ref="#" id="modificarPerfil">Perfil</a></li>-->
+
+        </ul>
+        <form class="navbar-form navbar-right">
+        </form>
+
+        <form class="navbar-form navbar-right" id="modalPerfil">
+        </form>
+
+      </div>
+    </div>
+  </nav>
+
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-sm-3 col-md-2 sidebar" id="contenedor-lateral">
+        <ul class="nav nav-sidebar menuInfo">
+          <li class="active"><a href="">Tablero <span class="sr-only">(current)</span></a></li>
+          <li><a href="#">Consultas</a></li>
+          <li><a href="#">Reportes</a></li>
+        </ul>
+        <ul class="nav nav-sidebar menuCliente">
+		<li><a href="#">Crear Consulta</a></li>
+          <li><a href="#">Mis Consultas</a></li>
+          <li><a href="#">Configurar Perfil</a></li>
+        </ul>
+        <ul class="nav nav-sidebar menuDoctor">
+          <li><a id="menu-consultas" href="#">Consultas Abiertas</a></li>
+          <li><a id="menu-inhabilitar" href="#">Inhabilitar pacientes</a></li>
+          <li><a id="menu-abonado" href="#">Abonado de consultas</a></li>
+        </ul>
+      </div>
+
+      <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+        <h1 class="page-header">Tablero</h1>
+
+        <div class="row placeholders botonera">
+          <div class="col-xs-6 col-sm-4 placeholder crearConsultaMenu menues">
+            <a href="#"><img src="./svg/003ambulance.svg" width="100" height="100" class="img-responsive" alt=""></a>
+            <h4>Consultas</h4>
+            <span class="text-muted">Crear Consulta</span>
+          </div>
+          <div class="col-xs-6 col-sm-4 placeholder buscarConsultaMenu menues">
+            <a href="#"><img src="./svg/004search.svg" width="100" height="100" class="img-responsive" alt=""></a>
+            <h4>Consultas</h4>
+            <span class="text-muted">Listar consultas</span>
+          </div>
+          <div class="col-xs-6 col-sm-4 placeholder modificarPerfilMenu menues">
+            <a href="#"><img src="./svg/user.svg" width="100" height="100" class="img-responsive" alt=""></a>
+            <h4>Perfil</h4>
+            <span class="text-muted">Modificar perfil</span>
+          </div>
+        </div>
+
+
+        <div class="row  crearConsultaInfo infos">
+          <div class="col-xs-12 col-sm-12 ">
+            <h4 class="volverAMenu"><a href="#">Volver</a></h4>
+            <span class="text-info">Crear Consulta</span>
+          </div>
+
+          <div class="col-xs-12 col-sm-12" id="crearConsulta"></div>
+
+        </div>
+
+
+        <div class="row  buscarConsultaInfo infos">
+          <div class="col-xs-12 col-sm-12">
+
+
+            <h4 class="volverAMenu"><a href="#">Volver</a></h4>
+            <span class="text-info">Buscar Consulta</span>
+          </div>
+          <div class="col-xs-12 col-sm-12" id="buscarConsulta"></div>
+          <div class="col-xs-12 col-sm-12" id="buscarEspecialidad"></div>
+        </div>
+
+
+        <div class="row  modificarPerfilInfo infos">
+          <div class="col-xs-12 col-sm-12 ">
+
+
+            <h4 class="volverAMenu"><a href="#">Volver</a></h4>
+            <span class="text-info">Modificar Perfil</span>
+          </div>
+
+          <div class="col-xs-12 col-sm-12" id="formPerfil"></div>
+
+
+        </div>
+
+        <div id="paciente"></div>
+        <h2 class="sub-header">Reportes </h2>
+        <div id="consultasGeneradas"></div>
+
+
+      </div>
+
+
+      <!-- Bootstrap core JavaScript
+    ================================================== -->
+
+
+      <!-- Placed at the end of the document so the pages load faster -->
+      <script src="./js/jquery.min.js"></script>
+      <script src="./js/bootstrap.min.js"></script>
+      <script src="./js/libreria.js"></script>
+      <script src="./datos.js"></script>
+      <script src="./medico.js"></script>
+      <script src="./paciente.js"></script>
+      <script src="./js/login.js"></script>
+      
+
+
+</body>
+
+</html>
+
